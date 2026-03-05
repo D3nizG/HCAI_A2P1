@@ -1,6 +1,8 @@
 const inputField = document.getElementById('user-input')
 const sendBtn = document.getElementById('send-btn')
 const messagesContainer = document.getElementById('messages')
+const retrievalMethod = document.getElementById('retrieval-method')
+const uploadBtn = document.getElementById('upload-btn')
 
 const sendMessage = () => {
     let userMessage = inputField.value.trim();
@@ -21,3 +23,19 @@ const sendMessage = () => {
 }
 
 sendBtn.addEventListener('click', sendMessage);
+
+inputField.addEventListener('keydown', function (event) {
+    if (event.key == 'Enter') {
+        sendMessage();
+    }
+});
+
+retrievalMethod.addEventListener('change', function () {
+    const selectedMethod = retrievalMethod.value;
+    console.log("Retrieval method: " + selectedMethod);
+});
+
+uploadBtn.addEventListener('click', function () {
+    const file = document.getElementById('file-input').files[0];
+    console.log("Selected file: " + file.name);
+});
